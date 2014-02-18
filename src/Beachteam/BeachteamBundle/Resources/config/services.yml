@@ -1,0 +1,10 @@
+parameters:
+    beachteam.namer.class:  Beachteam\BeachteamBundle\Namer\CatNamer
+#    beachteam.example.class: Beachteam\BeachteamBundle\Example
+
+services:
+    custom_namer:
+            class:      "%beachteam.namer.class%"
+#    beachteam.example:
+#        class: %beachteam.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

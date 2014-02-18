@@ -1,0 +1,23 @@
+{% extends 'BeachteamBundle::layout.html.twig' %}
+{% block title %}Nieuws{% endblock%}
+{% block body %}
+    {% for player in players %}
+        <div class="row player-section">
+            <div class="col-sm-4 pull-left">
+                <img class="img-responsive" src="{{ asset(['images/', player.media.url]|join) }}" />
+            </div>
+            <div class="col-sm-8 pull-left">
+                <p><a href="{{ player.facebookUrl }}">{{ player.name }}</a></p>
+                <p>Email: {{ player.email }}</p>
+                <p>Geboorteplaats: {{ player.birthplace }}</p>
+                <p>Geboortedatum {{ player.birthdate|date('Y-m-d') }}</p>
+                <p>Nationaliteit: {{ player.nationality }}</p>
+                <p>Club in zaal: {{ player.club }}</p>
+                <p>Positie in zaal: {{ player.posiition }}</p>
+            </div>
+        </div>
+
+    {% else %}
+        <p>There are players set yet.</p>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'BeachteamBundle::layout.html.twig' %}
+{% block title %}Nieuws{% endblock%}
+{% block body %}
+    {% for article in articles %}
+        <div class="row">
+            <div class="col-sm-12">
+                <article class="article">
+                    <header>
+                        <h2><a href="{{ path('BeachteamBundle_article_detail', { 'id': article.item.id }) }}">{{ article.item.title }}</a></h2>
+                    </header>
+                    <div class="date">Gepubliceerd op: <time datetime="{{ article.item.created|date('c') }}">{{ article.item.created|date('l, F j, Y') }}</time></div>
+                    <div>
+                        <p>{{ article.item.description }}</p>
+                        <p class="continue"><a href="{{ path('BeachteamBundle_article_detail', { 'id': article.item.id }) }}">Continue reading...</a></p>
+                    </div>
+                    <footer class="meta">
+                        <p>Posted by <span class="highlight">{{article.item.user.username}}</span> at {{ article.item.created|date('h:iA') }}</p>
+                    </footer>
+                </article>
+            </div>
+        </div>
+
+    {% else %}
+        <p>Er zijn nog geen artikelen.</p>
+    {% endfor %}
+{% endblock %}

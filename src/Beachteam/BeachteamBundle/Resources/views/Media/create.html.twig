@@ -1,0 +1,16 @@
+{% extends 'BeachteamBundle::layout.html.twig' %}
+{% block title %}Foto's toevoegen{% endblock%}
+{% block body %}
+
+    <form action="{{ path('BeachteamBundle_media_create') }}" method="post" {{ form_enctype(form) }} class="blogger">
+        {{ form_errors(form) }}
+
+        {{ form_row(form.item.title) }}
+        {{ form_row(form.item.description) }}
+        {{ form_row(form.url, { 'attr': {'data-url': "{{ oneup_uploader_endpoint('gallery') }}"} }) }}
+
+        {{ form_rest(form) }}
+
+        <input type="submit" value="Submit" />
+    </form>
+{% endblock %}

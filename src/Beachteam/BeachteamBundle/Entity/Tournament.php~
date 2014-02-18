@@ -1,0 +1,53 @@
+<?php
+
+namespace Beachteam\BeachteamBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tournament
+ *
+ * @ORM\Table(name="tournament")
+ * @ORM\Entity
+ */
+class Tournament
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="start", type="datetime", nullable=false)
+     */
+    private $start;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="end", type="datetime", nullable=false)
+     */
+    private $end;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="location", type="string", length=255, nullable=false)
+     */
+    private $location;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", nullable=false)
+     */
+    private $type;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="tournament_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $tournamentId;
+
+
+}

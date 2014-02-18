@@ -1,0 +1,35 @@
+<?php
+
+namespace Beachteam\BeachteamBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Article
+ *
+ * @ORM\Table(name="article")
+ * @ORM\Entity
+ */
+class Article
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="body", type="text", nullable=false)
+     */
+    private $body;
+
+    /**
+     * @var \Beachteam\BeachteamBundle\Entity\Item
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Beachteam\BeachteamBundle\Entity\Item")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="item_id", referencedColumnName="id")
+     * })
+     */
+    private $item;
+
+
+}

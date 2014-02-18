@@ -1,0 +1,9 @@
+beachteam:
+    resource: "@BeachteamBundle/Resources/config/routing.yml"
+    prefix:   /
+
+# Oneuploaderbundle # enable dynamic routes
+oneup_uploader:
+    resource: .
+    type: uploader
+
