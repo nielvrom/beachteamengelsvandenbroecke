@@ -17,28 +17,21 @@ class Media
      *
      * @ORM\Column(name="url", type="string", length=255, nullable=false)
      */
-    private $url;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="type", type="string", length=3, nullable=false)
-     */
-    private $type;
+    protected $url;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mimetype", type="string", length=255, nullable=false)
      */
-    private $mimetype;
+    protected $mimetype;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="isexternal", type="boolean", nullable=true)
      */
-    private $isexternal;
+    protected $isexternal;
 
     /**
      * @var integer
@@ -47,7 +40,7 @@ class Media
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var \Beachteam\BeachteamBundle\Entity\Item
@@ -57,7 +50,7 @@ class Media
      *   @ORM\JoinColumn(name="item_id", referencedColumnName="id")
      * })
      */
-    private $item;
+    protected $item;
 
 
 
@@ -82,29 +75,6 @@ class Media
     public function getUrl()
     {
         return $this->url;
-    }
-
-    /**
-     * Set type
-     *
-     * @param string $type
-     * @return Media
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string 
-     */
-    public function getType()
-    {
-        return $this->type;
     }
 
     /**

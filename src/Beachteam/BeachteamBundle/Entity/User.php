@@ -18,56 +18,56 @@ class User implements AdvancedUserInterface
      *
      * @ORM\Column(name="username", type="string", length=45, nullable=false)
      */
-    private $username;
+    protected $username;
 
     /**
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=60, nullable=false)
      */
-    private $password;
+    protected $password;
 
     /**
      * @var string
      *
      * @ORM\Column(name="salt", type="string", length=30, nullable=false)
      */
-    private $salt;
+    protected $salt;
 
     /**
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=45, nullable=false)
      */
-    private $firstname;
+    protected $firstname;
 
     /**
      * @var string
      *
      * @ORM\Column(name="surname", type="string", length=45, nullable=false)
      */
-    private $surname;
+    protected $surname;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
-    private $email;
+    protected $email;
 
     /**
      * @var string
      *
      * @ORM\Column(name="token", type="string", length=45, nullable=true)
      */
-    private $token;
+    protected $token;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime", nullable=false)
      */
-    private $created;
+    protected $created;
 
     /**
      * @var integer
@@ -76,7 +76,7 @@ class User implements AdvancedUserInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var \Beachteam\BeachteamBundle\Entity\Role
@@ -86,18 +86,15 @@ class User implements AdvancedUserInterface
      *   @ORM\JoinColumn(name="role_id", referencedColumnName="id")
      * })
      */
-    private $role;
-
-    private $plainPassword;
+    protected $role;
 
     /**
-     * Constructor
-     */
+    * Constructor
+    */
     public function __construct()
     {
         $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
     }
-
 
     /**
      * Set username
@@ -331,6 +328,7 @@ class User implements AdvancedUserInterface
         $this->plainPassword = $plainPassword;
     }
 
+
     /**
      * Implementation of AdvancedUserInterface method
      *
@@ -370,4 +368,5 @@ class User implements AdvancedUserInterface
     {
         return true;
     }
+
 }

@@ -9,8 +9,15 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="item", indexes={@ORM\Index(name="fk_item_user1_idx", columns={"user_id"})})
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({
+ *     "ITEM"="Beachteam\BeachteamBundle\Entity\Item",
+ *     "ARTICLE"="Beachteam\BeachteamBundle\Entity\Article",
+ *     "IMAGE"="Beachteam\BeachteamBundle\Entity\Media"
+ * })
  */
+
 class Item
 {
     /**
@@ -18,28 +25,28 @@ class Item
      *
      * @ORM\Column(name="title", type="string", length=255, nullable=false)
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
      */
-    private $description;
+    protected $description;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime", nullable=false)
      */
-    private $created;
+    protected $created;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="deleted", type="datetime", nullable=true)
      */
-    private $deleted;
+    protected $deleted;
 
     /**
      * @var integer
@@ -48,7 +55,7 @@ class Item
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var \Beachteam\BeachteamBundle\Entity\User
@@ -58,12 +65,9 @@ class Item
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })
      */
-    private $user;
+    protected $user;
 
-    public function __construct()
-    {
-        $this->setCreated(new \DateTime('now'));
-    }
+
 
     /**
      * Set title

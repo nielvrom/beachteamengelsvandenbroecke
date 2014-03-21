@@ -7,25 +7,26 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
 
-use Beachteam\BeachteamBundle\Entity\User;
 use Beachteam\BeachteamBundle\Entity\Enquiry;
 
 use Beachteam\BeachteamBundle\Form\Type\EnquiryType;
 
 class DefaultController extends Controller
 {
-    public function indexAction($name)
+    public function indexAction(Request $request)
     {
-        return $this->render('BeachteamBundle:Default:index.html.twig');
-    }
+        $em = $this->getDoctrine()->getManager();
 
-    public function sponsorsAction()
-    {
-        return $this->render('BeachteamBundle:Default:sponsors.html.twig');
-    }
+        $players = $em->getRepository('BeachteamBundle:Player')->findAll();
+        $repository = $em->getRepository('BeachteamBundle:Article');
 
-    public function contactAction(Request $request)
-    {
+        $articles = $repository->createQueryBuilder('a')
+            ->where('a.deleted is NULL')
+            ->getQuery()
+            ->getResult();
+
+        $tournaments = $em->getRepository('BeachteamBundle:Tournament')->findAll();
+
         $enquiry = new Enquiry();
         $form = $this->createForm(new EnquiryType(), $enquiry);
 
@@ -49,8 +50,12 @@ class DefaultController extends Controller
             }
         }
 
-        return $this->render('BeachteamBundle:Default:contact.html.twig', array(
-            'form' => $form->createView()
+        return $this->render('BeachteamBundle:Default:index.html.twig', array(
+            'players'      => $players,
+            'articles'     => $articles,
+            'tournaments'      => $tournaments,
+            'form' => $form->createView(),
         ));
+
     }
 }

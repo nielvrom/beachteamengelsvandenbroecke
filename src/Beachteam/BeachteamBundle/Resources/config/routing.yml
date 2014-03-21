@@ -1,85 +1,39 @@
-# ARTICLES OVERVIEW PAGE
-BeachteamBundle_articlepage:
-    pattern:  /article/index
-    defaults: { _controller: BeachteamBundle:Article:index }
-    requirements:
-        _method:  GET
-
-# ARTICLES DETAIL PAGE
-BeachteamBundle_article_detail:
-    pattern:  /article/detail/{id}
-    defaults: { _controller: BeachteamBundle:Article:detail }
-    requirements:
-        _method:  GET
-        id: \d+
-
-# ARTICLE CREATE PAGE
-BeachteamBundle_article_create:
-    pattern:  /article/create
-    defaults: { _controller: BeachteamBundle:Article:create }
+# HOMEPAGE (ONE PAGE WEBSITE)
+BeachteamBundle_homepage:
+    pattern:  /
+    defaults: { _controller: BeachteamBundle:Default:index }
     requirements:
         _method:  GET|POST
 
-# BIO OVERVIEW PAGE
-BeachteamBundle_biopage:
-    pattern:  /bio/index
-    defaults: { _controller: BeachteamBundle:Bio:index }
-    requirements:
-        _method:  GET
-
-# BIO EDIT PAGE
-BeachteamBundle_bio_edit:
-    pattern:  /bio/edit
-    defaults: { _controller: BeachteamBundle:Bio:edit }
+# BACKOFFICE
+BeachteamBundle_loginpage:
+    pattern:  /admin/login
+    defaults: { _controller: BeachteamBundle:Admin:login }
     requirements:
         _method:  GET|POST
 
-# TOURNAMENTS OVERVIEW PAGE
-BeachteamBundle_tournamentspage:
-    pattern:  /tournament/index
-    defaults: { _controller: BeachteamBundle:Tournament:index }
-    requirements:
-        _method:  GET
+BeachteamBundle_adminpage:
+    pattern:  /admin/index
+    defaults: { _controller: BeachteamBundle:Admin:index }
 
-# TOURNAMENTS EDIT PAGE
-BeachteamBundle_tournaments_edit:
-    pattern:  /tournament/edit
-    defaults: { _controller: BeachteamBundle:Tournament:edit }
-    requirements:
-        _method:  GET|POST
+BeachteamBundle_adminbiopage:
+    pattern:  /admin/bio
+    defaults: { _controller: BeachteamBundle:Admin:bio }
 
-# MEDIA OVERVIEW PAGE
-BeachteamBundle_mediapage:
-    pattern:  /media/index
-    defaults: { _controller: BeachteamBundle:Media:index }
-    requirements:
-        _method:  GET
+BeachteamBundle_admintournamentspage:
+    pattern:  /admin/tournaments
+    defaults: { _controller: BeachteamBundle:Admin:tournaments }
 
-# MEDIA DETAIL PAGE
-BeachteamBundle_media_detail:
-    pattern:  /media/detail/{id}
-    defaults: { _controller: BeachteamBundle:Media:detail }
-    requirements:
-        _method:  GET
-        id: \d+
+BeachteamBundle_adminarticlespage:
+    pattern:  /admin/articles
+    defaults: { _controller: BeachteamBundle:Admin:articles }
 
-# MEDIA CREATE PAGE
-BeachteamBundle_media_create:
-    pattern:  /media/create
-    defaults: { _controller: BeachteamBundle:Media:create }
-    requirements:
-        _method:  GET|POST
+BeachteamBundle_adminpicturespage:
+    pattern:  /admin/pictures
+    defaults: { _controller: BeachteamBundle:Admin:pictures }
 
-# SPONSORS OVERVIEW PAGE
-BeachteamBundle_sponsorspage:
-    pattern:  /default/sponsors
-    defaults: { _controller: BeachteamBundle:Default:sponsors }
-    requirements:
-        _method:  GET
+BeachteamBundle_adminsponsorspage:
+    pattern:  /admin/sponsors
+    defaults: { _controller: BeachteamBundle:Admin:sponsors }
 
-# CONTACT PAGE
-BeachteamBundle_contactpage:
-    pattern:  /default/contact
-    defaults: { _controller: BeachteamBundle:Default:contact }
-    requirements:
-        _method:  GET|POST
+

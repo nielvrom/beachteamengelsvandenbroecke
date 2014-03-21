@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Beachteam\BeachteamBundle\BeachteamBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Oneup\UploaderBundle\OneupUploaderBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

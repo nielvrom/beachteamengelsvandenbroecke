@@ -77,3 +77,9 @@ oneup_uploader:
         gallery:
             frontend: blueimp
             namer: custom_namer
+
+services:
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }

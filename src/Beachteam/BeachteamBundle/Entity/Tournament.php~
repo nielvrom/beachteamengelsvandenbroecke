@@ -36,18 +36,18 @@ class Tournament
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", nullable=false)
+     * @ORM\Column(name="tournamenttype", type="string", nullable=false)
      */
-    private $type;
+    private $tournamenttype;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="tournament_id", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $tournamentId;
+    private $id;
 
 
 }

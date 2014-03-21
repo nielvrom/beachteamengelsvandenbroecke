@@ -7,3 +7,12 @@ oneup_uploader:
     resource: .
     type: uploader
 
+beachteam_loginpage:
+    pattern:  /admin/login
+    defaults: { _controller: BeachteamBundle:Admin:login }
+beachteam_logincheck:
+   pattern:  /login_check
+beachteam_logout:
+  pattern:  /logout
+
+

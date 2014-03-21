@@ -1,1 +1,197 @@
-Hello
+{% extends 'base.html.twig' %}
+{% block title %}Beachteam Engels Vandenbroecke{% endblock%}
+{% block bio %}
+    {% for player in players %}
+        <div class="col-sm-3 pull-left">
+            <img class="img-responsive" src="{{ asset(['images/', player.media.url]|join) }}" />
+        </div>
+        <div class="col-sm-3 pull-left">
+            <p class="playername"><a href="{{ player.facebookUrl }}" target="_blank">{{ player.name }}</a></p>
+            <table class="playerdetails">
+                <tr>
+                    <td>Email</td>
+                    <td>{{ player.email }}</td>
+                </tr>
+                <tr>
+                    <td>Geboorteplaats</td>
+                    <td>{{ player.birthplace }}</td>
+                </tr>
+                <tr>
+                    <td>Geboortedatum</td>
+                    <td>{{ player.birthdate|date('Y-m-d') }}</td>
+                </tr>
+                <tr>
+                    <td>Nationaliteit</td>
+                    <td>{{ player.nationality }}</td>
+                </tr>
+                <tr>
+                    <td>Club in zaal</td>
+                    <td>{{ player.club }}</td>
+                </tr>
+                <tr>
+                    <td>Positie in zaal</td>
+                    <td>{{ player.posiition }}</td>
+                </tr>
+            </table>
+        </div>
+    {% else %}
+        <p>There are players set yet.</p>
+    {% endfor %}
+{% endblock %}
+
+{% block nieuws %}
+    {% for article in articles %}
+        <div class="row">
+            <div class="col-sm-12">
+                <article class="article">
+                    <header>
+                        <h2>{{ article.title }}</h2>
+                    </header>
+                    <div class="date">Gepubliceerd op: <time datetime="{{ article.created|date('c') }}">{{ article.created|date('l, F j, Y') }}</time></div>
+                    <div>
+                        <p>{{ article.description }}</p>
+                        <p class="continue">Continue reading...</p>
+                    </div>
+                        <p>Posted by <span class="highlight">{{article.user.username}}</span> at {{ article.created|date('h:iA') }}</p>
+                </article>
+            </div>
+        </div>
+
+    {% else %}
+        <p>Er zijn nog geen artikelen.</p>
+    {% endfor %}
+{% endblock %}
+
+{% block fotos %}
+    <div class="col-sm-3">
+        <a href="https://www.facebook.com/media/set/?set=a.466431415139.249216.668645139&type=1&l=c1c66cbd67" target="_blank"><img class="img-responsive" src="http://lorempixel.com/300/200/sports/" alt="image" /></a>
+    </div>
+    <div class="col-sm-3">
+        <a href=""><img class="img-responsive" src="http://lorempixel.com/300/200/sports/" alt="image" /></a>
+    </div>
+    <div class="col-sm-3">
+        <a href=""><img class="img-responsive" src="http://lorempixel.com/300/200/sports/" alt="image" /></a>
+    </div>
+    <div class="col-sm-3">
+        <a href=""><img class="img-responsive" src="http://lorempixel.com/300/200/sports/" alt="image" /></a>
+    </div>
+{% endblock %}
+
+{% block tornooien %}
+    <div class="col-sm-12">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Datum</th>
+                <th>Locatie</th>
+                <th>Type</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for tournament in tournaments %}
+                <tr>
+                    <td>{{ tournament.start|date('j') }} - {{ tournament.end|date("j F Y", 'Europe/Brussels') }}</td>
+                    <td>{{ tournament.location }}</td>
+                    <td>{{ tournament.tournamenttype }}</td>
+                </tr>
+            {% else %}
+                <p>Er zijn nog geen tornooien ingegeven.</p>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block sponsors %}
+    <div class="col-sm-3">
+        <a href=""><img class="img-responsive" src="http://lorempixel.com/300/200/business/" alt="image" /></a>
+    </div>
+    <div class="col-sm-3">
+        <a href=""><img class="img-responsive" src="http://lorempixel.com/300/200/business/" alt="image" /></a>
+    </div>
+    <div class="col-sm-3">
+        <a href=""><img class="img-responsive" src="http://lorempixel.com/300/200/business/" alt="image" /></a>
+    </div>
+    <div class="col-sm-3">
+        <a href=""><img class="img-responsive" src="http://lorempixel.com/300/200/business/" alt="image" /></a>
+    </div>
+{% endblock %}
+
+{% block contact %}
+    <div class="col-sm-12">
+        {% for flashMessage in app.session.flashbag.get('contact-notice') %}
+            <div class="blogger-notice">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+
+        <form action="{{ path('BeachteamBundle_homepage') }}" method="post" {{ form_enctype(form) }}>
+            {% set class_error = ' has-error alert alert-warning' %}
+            {{ form_errors(form) }}
+            {{ form_start(form, {"attr": {"class": "form-horizontal"} }) }}
+            <div class="form-group{{ form.name.vars.valid ? '' : class_error }}">
+                {{ form_label(form.name, label|default(),
+                { "label_attr": { "class": "col-sm-2 control-label"}}) }}
+                <div class="col-sm-10">
+                    {{ form_widget(form.name,
+                    {"attr": {"class": "form-control" } }) }}
+                </div>
+                {% if not form.name.vars.valid %}
+                    <div class="col-sm-2">
+                        <h5><i class="glyphicon glyphicon-warning-sign"></i> <strong>Please fix:</strong></h5>
+                        {{ form_errors(form.name) }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group{{ form.email.vars.valid ? '' : class_error }}">
+                {{ form_label(form.email, label|default(),
+                { "label_attr": { "class": "col-sm-2 control-label"}}) }}
+                <div class="col-sm-10">
+                    {{ form_widget(form.email,
+                    {"attr": {"class": "form-control" } }) }}
+                </div>
+                {% if not form.email.vars.valid %}
+                    <div class="col-sm-2">
+                        <h5><i class="glyphicon glyphicon-warning-sign"></i> <strong>Please fix:</strong></h5>
+                        {{ form_errors(form.email) }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group{{ form.subject.vars.valid ? '' : class_error }}">
+                {{ form_label(form.subject, label|default(),
+                { "label_attr": { "class": "col-sm-2 control-label"}}) }}
+                <div class="col-sm-10">
+                    {{ form_widget(form.subject,
+                    {"attr": {"class": "form-control" } }) }}
+                </div>
+                {% if not form.subject.vars.valid %}
+                    <div class="col-sm-2">
+                        <h5><i class="glyphicon glyphicon-warning-sign"></i> <strong>Please fix:</strong></h5>
+                        {{ form_errors(form.subject) }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group{{ form.body.vars.valid ? '' : class_error }}">
+                {{ form_label(form.body, label|default(),
+                { "label_attr": { "class": "col-sm-2 control-label"}}) }}
+                <div class="col-sm-10">
+                    {{ form_widget(form.body,
+                    {"attr": {"class": "form-control" } }) }}
+                </div>
+                {% if not form.body.vars.valid %}
+                    <div class="col-sm-2">
+                        <h5><i class="glyphicon glyphicon-warning-sign"></i> <strong>Please fix:</strong></h5>
+                        {{ form_errors(form.body) }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10" style="padding-top:10px;">
+                    {{ form_widget(form.btn_contact,
+                    {"attr": {"class": "btn btn-default"} }) }}
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </form>
+    </div>
+{% endblock %}

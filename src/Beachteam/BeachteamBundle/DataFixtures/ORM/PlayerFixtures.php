@@ -26,7 +26,6 @@ class PlayerFixtures extends AbstractFixture implements OrderedFixtureInterface
 
         $media1 = new Media();
         $media1->setUrl('stef.jpg');
-        $media1->setType('player');
         $media1->setMimetype('image/jpeg');
         $manager->persist($media1);
 
@@ -47,7 +46,6 @@ class PlayerFixtures extends AbstractFixture implements OrderedFixtureInterface
 
         $media2 = new Media();
         $media2->setUrl('maarten.jpg');
-        $media2->setType('player');
         $media2->setMimetype('image/jpeg');
         $manager->persist($media2);
 

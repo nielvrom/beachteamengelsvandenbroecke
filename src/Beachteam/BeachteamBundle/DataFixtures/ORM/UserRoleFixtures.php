@@ -38,7 +38,7 @@ class UserRoleFixtures extends AbstractFixture implements OrderedFixtureInterfac
         $user1->setSurname('Engels');
         $user1->setEmail('stefengels@hotmail.com');
         $user1->setCreated(new \DateTime('now'));
-        $user1->setRoles($role1);
+        $user1->setRole($role1);
         $manager->persist($user1);
 
         // USER || MAARTEN VANDENBROECKE ||
@@ -53,7 +53,7 @@ class UserRoleFixtures extends AbstractFixture implements OrderedFixtureInterfac
         $user2->setSurname('Vandenbroecke');
         $user2->setEmail('maarten.vdb@telenet.be');
         $user2->setCreated(new \DateTime('now'));
-        $user2->setRoles($role1);
+        $user2->setRole($role1);
         $manager->persist($user2);
 
         $manager->flush();

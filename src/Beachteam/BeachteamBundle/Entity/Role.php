@@ -17,14 +17,14 @@ class Role
      *
      * @ORM\Column(name="name", type="string", length=45, nullable=false)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255, nullable=true)
      */
-    private $description;
+    protected $description;
 
     /**
      * @var integer
@@ -33,7 +33,7 @@ class Role
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
 
 

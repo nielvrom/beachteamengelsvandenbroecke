@@ -11,7 +11,7 @@
         "symfony/symfony": "~2.4",
         "doctrine/orm": "~2.2,>=2.2.3",
         "doctrine/doctrine-bundle": "~1.2",
-        "twig/extensions": "~1.0",
+        "twig/extensions": "1.0.*@dev",
         "symfony/assetic-bundle": "~2.3",
         "symfony/swiftmailer-bundle": "~2.3",
         "symfony/monolog-bundle": "~2.4",
@@ -22,7 +22,8 @@
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "doctrine/data-fixtures" : "dev-master",
         "ircmaxell/password-compat": "1.0.3",
-        "oneup/uploader-bundle": "1.0.1"
+        "oneup/uploader-bundle": "1.0.1",
+        "egeloen/ckeditor-bundle": "~2.0"
     },
     "scripts": {
         "post-install-cmd": [

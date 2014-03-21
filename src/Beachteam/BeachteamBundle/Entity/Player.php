@@ -17,70 +17,70 @@ class Player
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      *
      * @ORM\Column(name="facebook_url", type="string", length=255, nullable=true)
      */
-    private $facebookUrl;
+    protected $facebookUrl;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
-    private $email;
+    protected $email;
 
     /**
      * @var string
      *
      * @ORM\Column(name="birthplace", type="string", length=45, nullable=false)
      */
-    private $birthplace;
+    protected $birthplace;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="birthdate", type="datetime", nullable=false)
      */
-    private $birthdate;
+    protected $birthdate;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nationality", type="string", length=45, nullable=false)
      */
-    private $nationality;
+    protected $nationality;
 
     /**
      * @var float
      *
      * @ORM\Column(name="length", type="float", precision=10, scale=0, nullable=true)
      */
-    private $length;
+    protected $length;
 
     /**
      * @var float
      *
      * @ORM\Column(name="weight", type="float", precision=10, scale=0, nullable=true)
      */
-    private $weight;
+    protected $weight;
 
     /**
      * @var string
      *
      * @ORM\Column(name="club", type="string", length=255, nullable=false)
      */
-    private $club;
+    protected $club;
 
     /**
      * @var string
      *
      * @ORM\Column(name="posiition", type="string", nullable=false)
      */
-    private $posiition;
+    protected $posiition;
 
     /**
      * @var integer
@@ -89,7 +89,7 @@ class Player
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var \Beachteam\BeachteamBundle\Entity\Media
@@ -99,7 +99,7 @@ class Player
      *   @ORM\JoinColumn(name="media_id", referencedColumnName="id")
      * })
      */
-    private $media;
+    protected $media;
 
 
 

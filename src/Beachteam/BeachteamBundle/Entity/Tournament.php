@@ -17,37 +17,37 @@ class Tournament
      *
      * @ORM\Column(name="start", type="datetime", nullable=false)
      */
-    private $start;
+    protected $start;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="end", type="datetime", nullable=false)
      */
-    private $end;
+    protected $end;
 
     /**
      * @var string
      *
      * @ORM\Column(name="location", type="string", length=255, nullable=false)
      */
-    private $location;
+    protected $location;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", nullable=false)
+     * @ORM\Column(name="tournamenttype", type="string", nullable=false)
      */
-    private $type;
+    protected $tournamenttype;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="tournament_id", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $tournamentId;
+    protected $id;
 
 
 
@@ -121,35 +121,35 @@ class Tournament
     }
 
     /**
-     * Set type
+     * Set tournamenttype
      *
-     * @param string $type
+     * @param string $tournamenttype
      * @return Tournament
      */
-    public function setType($type)
+    public function setTournamenttype($tournamenttype)
     {
-        $this->type = $type;
+        $this->tournamenttype = $tournamenttype;
 
         return $this;
     }
 
     /**
-     * Get type
+     * Get tournamenttype
      *
      * @return string 
      */
-    public function getType()
+    public function getTournamenttype()
     {
-        return $this->type;
+        return $this->tournamenttype;
     }
 
     /**
-     * Get tournamentId
+     * Get id
      *
      * @return integer 
      */
-    public function getTournamentId()
+    public function getId()
     {
-        return $this->tournamentId;
+        return $this->id;
     }
 }

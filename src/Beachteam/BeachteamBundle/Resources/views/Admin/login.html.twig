@@ -1,0 +1,47 @@
+{% extends 'userlogin.html.twig' %}
+{% block content %}
+    <div class="block-body">
+        {% set class_error = ' has-error alert alert-warning' %}
+        {% if loginError %}
+            <div class="alert alert-warning">{{ loginError.message }}</div>
+        {% endif %}
+        <form action="{{ path('beachteam_logincheck') }}" id="form-login" method="post">
+            <fieldset>
+                <dl>
+                    <dd class="form-group{{ loginForm.username.vars.valid ? '' : class_error }}">
+                        {{ form_row (loginForm.username, { 'attr': {'class': 'form-control'} }) }}
+                        {% if not loginForm.username.vars.valid %}
+                            <h5><i class="glyphicon glyphicon-warning-sign"></i> <strong>Please fix:</strong></h5>
+                            {{ form_errors(loginForm.username) }}
+                        {% endif %}
+                    </dd>
+                    <dd class="form-group{{ loginForm.password.vars.valid ? '' : class_error }}">
+                        {{ form_row (loginForm.password, { 'attr': {'class': 'form-control'} }) }}
+                        {% if not loginForm.password.vars.valid %}
+                            <h5><i class="glyphicon glyphicon-warning-sign"></i> <strong>Please fix:</strong></h5>
+                            {{ form_errors(loginForm.password) }}
+                        {% endif %}
+                    </dd>
+                    <dd class="form-group">
+                        <div class="checkbox">
+                            <input type="checkbox" id="remember" name="remember" checked>
+                            <label style="float:left;" for="remember">Onthoud mij</label>
+                        </div>
+                    </dd>
+                </dl>
+            </fieldset>
+            {{ form_widget(loginForm.btn_login,
+            {"attr": {"class": "btn btn-primary"} }) }}
+        </form>
+    </div>
+
+    <!--<form>
+        <label>Username</label>
+        <input type="text" class="span12">
+        <label>Password</label>
+        <input type="password" class="span12">
+        <a href="index.html" class="btn btn-primary pull-right">Sign In</a>
+        <label class="remember-me"><input type="checkbox"> Remember me</label>
+        <div class="clearfix"></div>
+    </form>-->
+{% endblock %}

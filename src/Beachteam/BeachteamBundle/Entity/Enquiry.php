@@ -2,10 +2,6 @@
 
 namespace Beachteam\BeachteamBundle\Entity;
 
-use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Email;
-
 class Enquiry
 {
     protected $name;
@@ -15,15 +11,6 @@ class Enquiry
     protected $subject;
 
     protected $body;
-
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
-    {
-        $metadata->addPropertyConstraint('name', new NotBlank());
-
-        $metadata->addPropertyConstraint('email', new Email());
-
-        $metadata->addPropertyConstraint('subject', new NotBlank());
-    }
 
     public function getName()
     {
